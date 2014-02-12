@@ -1,18 +1,18 @@
 Power Queue [![Build Status](https://travis-ci.org/CollectionFS/Meteor-powerqueue.png?branch=master)](https://travis-ci.org/CollectionFS/Meteor-powerqueue)
 =========
 
-PowerQueue is a powerful tool for handling:
-* async tasks
+PowerQueue is a powerful tool for:
+* managing async tasks
 * throttling resource usage
-* retry failed tasks
-* Allows sub queues
-* etc.
+* retrying failed tasks
+* monitoring progress
+* handling sub-queues
 
-[Live queue Example](http://power-queue-test.meteor.com)
+And... it's powered by Meteor's reactive sugar :)
 
-[Live sub queue Example](http://power-queue-sub-test.meteor.com)
+**Check out the cool [live queue demo](http://power-queue-test.meteor.com) and [live sub queue example](http://power-queue-sub-test.meteor.com).**
 
-And... It's powered by Meteor's reactive sugar :)
+Source code for both can be found in the two branches of the [power-queue-example repo](https://github.com/CollectionFS/power-queue-example).
 
 Kind regards,  
 Eric(@aldeed) and Morten(@raix)
@@ -111,10 +111,21 @@ This is a very rough example of how to make custom task handling,
   queue.add({ id: tasks.insert({ status: 'added', index: ++taskId }) });
 ```
 
-#Contribute
+# Troubleshooting
+
+Q: A task fails 5 times without any error message!  
+A: An exception is probably occurring. Try setting `debug: true`, when creating the queue.
+
+# Contribute
+
+Docs are automatically generated from [power-queue.js](power-queue.js) using [docmeteor](https://www.npmjs.org/package/docmeteor). Please submit pull requests against this file.
+
 Here's the [complete API documentation](internal.api.md), including private methods.
 
-Update docs, `npm install docmeteor`
-```bash
-$ docmeteor
-```
+To update the docs, run `npm install docmeteor` then `docmeteor`.
+
+## TODO / Limitations
+
+* scheduling - see [issue #15](https://github.com/CollectionFS/Meteor-power-queue/issues/15)
+* better exception hanlding - see [issue #20](https://github.com/CollectionFS/Meteor-power-queue/issues/20)
+* series / waterfall execution?
